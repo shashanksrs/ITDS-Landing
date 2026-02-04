@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ITDS - Integrated Turbomachinery Design System. Unifying turbomachinery design from concept to validation.">
+    <meta name="keywords" content="turbomachinery, design, engineering, CFD, automation">
+    <meta property="og:title" content="ITDS - Integrated Turbomachinery Design System">
+    <meta property="og:description" content="10× faster turbomachinery design with physics-driven automation">
+    <meta property="og:type" content="website">
     <title>ITDS - Integrated Turbomachinery Design System</title>
     <style>
         * {
@@ -20,6 +25,11 @@
             --text-muted: #cbd5e1;
             --border: #334155;
             --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -36,13 +46,14 @@
             top: 0;
             width: 100%;
             padding: 1.5rem 2rem;
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .logo {
@@ -50,23 +61,41 @@
             font-weight: 700;
             letter-spacing: -1px;
             color: var(--accent);
+            text-transform: uppercase;
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         nav a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-size: 0.95rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
         }
 
         nav a:hover {
             color: var(--accent);
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         /* Hero Section */
@@ -90,9 +119,22 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
             border-radius: 50%;
             animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
             z-index: 0;
         }
 
@@ -128,6 +170,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -1px;
+            line-height: 1.2;
         }
 
         .hero p {
@@ -137,6 +180,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.8;
         }
 
         .cta-buttons {
@@ -148,26 +192,27 @@
         }
 
         .btn {
-            padding: 0.75rem 2rem;
+            padding: 0.875rem 2.25rem;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
         .btn-primary {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
             color: white;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
         }
 
         .btn-primary:hover {
-            background: var(--accent-light);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
         }
 
         .btn-secondary {
@@ -178,7 +223,7 @@
 
         .btn-secondary:hover {
             background: rgba(59, 130, 246, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         .stage-badge {
@@ -186,14 +231,16 @@
             background: rgba(16, 185, 129, 0.2);
             border: 1px solid var(--success);
             color: var(--success);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+            padding: 0.65rem 1.25rem;
+            border-radius: 25px;
             font-size: 0.9rem;
             margin-bottom: 2rem;
             font-weight: 600;
+            letter-spacing: 0.5px;
+            animation: slideUp 0.8s ease-out 0.1s both;
         }
 
-        /* Problem Section */
+        /* Section Styling */
         .section {
             max-width: 1200px;
             margin: 6rem auto;
@@ -202,84 +249,130 @@
 
         .section h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             text-align: center;
             color: var(--text);
+            font-weight: 700;
         }
 
+        .section > p {
+            text-align: center !important;
+            color: var(--text-muted) !important;
+            margin-bottom: 3rem !important;
+            font-size: 1.1rem !important;
+        }
+
+        /* Problem Grid */
         .problem-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 4rem;
         }
 
         .problem-card {
-            background: rgba(30, 41, 59, 0.6);
+            background: rgba(30, 41, 59, 0.5);
             border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
             backdrop-filter: blur(10px);
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
         }
 
         .problem-card:hover {
             border-color: var(--accent);
             background: rgba(30, 41, 59, 0.8);
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .problem-card:hover::before {
+            transform: scaleX(1);
         }
 
         .problem-card h3 {
             color: var(--accent);
             margin-bottom: 1rem;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
+        }
+
+        .problem-card h4 {
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
         }
 
         .problem-card p {
             color: var(--text-muted);
             line-height: 1.8;
+            font-size: 0.95rem;
         }
 
-        /* Solution Section */
+        /* Solution Highlight */
         .solution-highlight {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(10, 185, 128, 0.05) 100%);
-            border: 1px solid var(--border);
-            padding: 3rem;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(10, 185, 128, 0.04) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            padding: 3.5rem;
+            border-radius: 12px;
             margin: 3rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .solution-highlight h3 {
             color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            font-weight: 700;
         }
 
         .benefits {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
 
         .benefit {
-            padding: 1.5rem;
+            padding: 2rem;
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .benefit:hover {
             background: rgba(15, 23, 42, 0.8);
-            border-left: 3px solid var(--accent);
-            border-radius: 4px;
+            transform: translateX(8px);
         }
 
         .benefit h4 {
             color: var(--accent-light);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
         }
 
         .benefit p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Market Section */
+        /* Market Stats */
         .market-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -289,10 +382,17 @@
 
         .stat {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
             background: rgba(30, 41, 59, 0.6);
-            border-radius: 8px;
+            border-radius: 12px;
             border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .stat:hover {
+            background: rgba(30, 41, 59, 0.8);
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .stat-number {
@@ -305,9 +405,10 @@
         .stat-label {
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        /* Timeline Section */
+        /* Timeline */
         .timeline {
             position: relative;
             padding: 2rem 0;
@@ -316,7 +417,7 @@
         .timeline-item {
             display: grid;
             grid-template-columns: 200px 1fr;
-            gap: 2rem;
+            gap: 3rem;
             margin-bottom: 3rem;
             position: relative;
         }
@@ -340,6 +441,7 @@
             color: var(--accent);
             position: relative;
             z-index: 1;
+            font-size: 1.05rem;
         }
 
         .timeline-date::before {
@@ -347,71 +449,83 @@
             position: absolute;
             left: -39px;
             top: 5px;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             background: var(--accent);
             border-radius: 50%;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
         }
 
         .timeline-content {
             background: rgba(30, 41, 59, 0.6);
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 3px solid var(--accent);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: rgba(30, 41, 59, 0.8);
         }
 
         .timeline-content h4 {
             color: var(--text);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
 
         .timeline-content p {
             color: var(--text-muted);
             font-size: 0.95rem;
+            line-height: 1.7;
         }
 
         /* Team Section */
         .team-intro {
             background: rgba(30, 41, 59, 0.6);
             border: 1px solid var(--border);
-            padding: 2rem;
-            border-radius: 8px;
+            padding: 3rem;
+            border-radius: 12px;
             margin-bottom: 3rem;
         }
 
         .team-intro h3 {
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
         .team-intro p {
             color: var(--text-muted);
             line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         /* Contact Section */
         .contact-section {
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(10, 185, 128, 0.05) 100%);
-            border-radius: 8px;
+            border-radius: 12px;
             margin: 4rem 0;
+            border: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .contact-section h2 {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .contact-section p {
             color: var(--text-muted);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             font-size: 1.1rem;
         }
 
         .contact-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -420,21 +534,31 @@
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 6px;
         }
 
         .contact-links a:hover {
             color: var(--accent-light);
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
         }
 
         /* Footer */
         footer {
-            padding: 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             border-top: 1px solid var(--border);
             color: var(--text-muted);
             font-size: 0.9rem;
             margin-top: 6rem;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
         }
 
         /* Responsive */
@@ -445,6 +569,7 @@
 
             .timeline-item {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .timeline-item::before {
@@ -461,6 +586,67 @@
 
             .hero p {
                 font-size: 1rem;
+            }
+
+            .section {
+                margin: 4rem auto;
+            }
+
+            .section h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .solution-highlight {
+                padding: 2rem;
+            }
+
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .team-intro {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .hero {
+                margin-top: 70px;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .section {
+                padding: 0 1rem;
+            }
+
+            .problem-grid {
+                gap: 1.5rem;
             }
         }
     </style>
@@ -486,7 +672,6 @@
             <p>Unifying turbomachinery design from concept to validation. A platform that lets engineers design 10× faster while keeping their proprietary IP intact.</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">Get Updates</a>
-                <a href="https://github.com" class="btn btn-secondary">View on GitHub</a>
             </div>
         </div>
     </section>
@@ -494,9 +679,7 @@
     <!-- Problem Section -->
     <section class="section" id="problem">
         <h2>The Problem</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">
-            OEMs and turbomachinery suppliers are trapped in a fragmented, painful design workflow.
-        </p>
+        <p>OEMs and turbomachinery suppliers are trapped in a fragmented, painful design workflow.</p>
         
         <div class="problem-grid">
             <div class="problem-card">
@@ -521,9 +704,7 @@
     <!-- Solution Section -->
     <section class="section" id="solution">
         <h2>Our Solution</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">
-            ITDS is the unified backbone for turbomachinery design. Physics-driven. Extensible. Audit-ready.
-        </p>
+        <p>ITDS is the unified backbone for turbomachinery design. Physics-driven. Extensible. Audit-ready.</p>
 
         <div class="solution-highlight">
             <h3>10× Faster Design Iteration</h3>
@@ -556,30 +737,30 @@
         </div>
 
         <div style="margin-top: 4rem;">
-            <h3 style="color: var(--accent); margin-bottom: 2rem;">What ITDS Integrates</h3>
+            <h3 style="color: var(--accent); margin-bottom: 2rem; font-size: 1.5rem;">What ITDS Integrates</h3>
             <div class="problem-grid">
                 <div class="problem-card">
-                    <h4 style="color: var(--accent-light); margin-bottom: 1rem;">Meanline Design</h4>
+                    <h4>Meanline Design</h4>
                     <p>1D thermodynamic design with validated loss correlations, off-design performance, and off-design prediction.</p>
                 </div>
                 <div class="problem-card">
-                    <h4 style="color: var(--accent-light); margin-bottom: 1rem;">Throughflow</h4>
+                    <h4>Throughflow</h4>
                     <p>2D radial equilibrium for multi-stage design and performance prediction across the design space.</p>
                 </div>
                 <div class="problem-card">
-                    <h4 style="color: var(--accent-light); margin-bottom: 1rem;">Geometry Engine</h4>
+                    <h4>Geometry Engine</h4>
                     <p>Parametric blade and annulus geometry generation for CAD export, meshing prep, or CFD.</p>
                 </div>
                 <div class="problem-card">
-                    <h4 style="color: var(--accent-light); margin-bottom: 1rem;">Mesh Automation</h4>
+                    <h4>Mesh Automation</h4>
                     <p>Automated grid generation for CFD (ANSYS TurboGrid, Numeca, open-source tools).</p>
                 </div>
                 <div class="problem-card">
-                    <h4 style="color: var(--accent-light); margin-bottom: 1rem;">CFD Integration</h4>
+                    <h4>CFD Integration</h4>
                     <p>Adapters for ANSYS Fluent, CFX, OpenFOAM. Run CFD, extract validation data, feed back to design.</p>
                 </div>
                 <div class="problem-card">
-                    <h4 style="color: var(--accent-light); margin-bottom: 1rem;">Extensibility</h4>
+                    <h4>Extensibility</h4>
                     <p>Plugin architecture for your proprietary models (loss correlations, heat transfer, stress).</p>
                 </div>
             </div>
@@ -589,9 +770,7 @@
     <!-- Market Section -->
     <section class="section" id="market">
         <h2>Market Opportunity</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-size: 1.1rem;">
-            Turbomachinery is a $150B+ global market. Design software is fragmented and expensive.
-        </p>
+        <p>Turbomachinery is a $150B+ global market. Design software is fragmented and expensive.</p>
 
         <div class="market-stats">
             <div class="stat">
@@ -638,9 +817,7 @@
     <!-- Roadmap Section -->
     <section class="section" id="roadmap">
         <h2>Development Roadmap</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem;">
-            24-month path to enterprise-ready platform with paying customers.
-        </p>
+        <p>24-month path to enterprise-ready platform with paying customers.</p>
 
         <div class="timeline">
             <div class="timeline-item">
@@ -687,7 +864,7 @@
                 We've built meanline solvers, managed CFD workflows at scale, and solved the integration problem from the inside. 
                 We know the pain points because we've lived them.
             </p>
-            <p style="margin-top: 1rem;">
+            <p>
                 Currently building in stealth mode. We're bootstrapping initial development with focus on physics validation 
                 before pursuing funding. Our goal: prove the technical approach works, then raise capital to scale the team and acquire pilot customers.
             </p>
@@ -701,7 +878,6 @@
             <p>We're building ITDS in the open. Follow our progress or reach out if you're interested in piloting.</p>
             <div class="contact-links">
                 <a href="mailto:contact@itds.dev">📧 Email</a>
-                <a href="https://github.com">🐙 GitHub</a>
                 <a href="https://linkedin.com">💼 LinkedIn</a>
             </div>
         </div>
@@ -710,7 +886,7 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 ITDS. Building the future of turbomachinery design.</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem;">Currently in development. Not for commercial use.</p>
+        <p>Currently in development. Not for commercial use.</p>
     </footer>
 </body>
 </html>
