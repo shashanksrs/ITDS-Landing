@@ -704,251 +704,243 @@
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">ITDS</div>
-        <ul>
-            <li><a href="#problem">Problem</a></li>
-            <li><a href="#solution">Solution</a></li>
-            <li><a href="#market">Market</a></li>
-            <li><a href="#roadmap">Roadmap</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+<body><!-- Only CONTENT sections updated. CSS / JS untouched -->
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="stage-badge">🚀 Building Stage</div>
-            <h1>Integrated Turbomachinery Design System</h1>
-            <p>Unifying turbomachinery design from concept to validation. A platform that lets engineers design 10× faster while keeping their proprietary IP intact.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get Updates</a>
-            </div>
+<!-- Navigation -->
+<nav>
+    <div class="logo">ITDS</div>
+    <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#capabilities">Capabilities</a></li>
+        <li><a href="#technology">Technology</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="stage-badge">⚙️ Concept Platform</div>
+        <h1>Integrated Turbomachinery Design System</h1>
+        <p>
+            A conceptual platform exploring unified workflows for turbomachinery
+            engineering, simulation integration, and design automation.
+        </p>
+        <div class="cta-buttons">
+            <a href="#contact" class="btn btn-primary">Learn More</a>
         </div>
-    </section>
+    </div>
+</section>
+<!-- Turbine Visualization -->
+<section class="turbine-container" id="turbineContainer">
+    <div class="canvas-container">
+        <canvas id="turbineCanvas"></canvas>
+    </div>
+    <div class="turbine-hint">💡 Drag to inspect | Scroll to Zoom</div>
+</section>
+<!-- Overview -->
+<section class="section" id="overview">
+    <h2>Overview</h2>
+    <p>
+        Modern turbomachinery design often involves multiple tools and workflows.
+        ITDS explores the idea of providing a unified environment that helps
+        engineers manage design data, automate repetitive tasks, and integrate
+        simulation tools more efficiently.
+    </p>
 
-    <!-- Turbine Visualization -->
-    <section class="turbine-container" id="turbineContainer">
-        <div class="canvas-container">
-            <canvas id="turbineCanvas"></canvas>
-        </div>
-        <div class="turbine-hint">💡 Drag to inspect | Scroll to Zoom</div>
-    </section>
-
-    <!-- Problem Section -->
-    <section class="section" id="problem">
-        <h2>The Problem</h2>
-        <p>OEMs and turbomachinery suppliers are trapped in a fragmented, painful design workflow.</p>
-        
-        <div class="problem-grid">
-            <div class="problem-card">
-                <h3>⏱️ Speed</h3>
-                <p>6-12 weeks per design iteration. Teams manually copy data between Excel, MATLAB, in-house tools, and CFD software. One mistake requires rework.</p>
-            </div>
-            <div class="problem-card">
-                <h3>💸 Cost</h3>
-                <p>$500K-2M/year in tool licenses (ANSYS, CATIA, proprietary software). 3-5 engineers just managing data integration.</p>
-            </div>
-            <div class="problem-card">
-                <h3>🔗 Integration</h3>
-                <p>No unified definition of thermodynamic state. Each tool interprets data differently. Data transfer errors cause 15-30% rework.</p>
-            </div>
-            <div class="problem-card">
-                <h3>📊 Design Space</h3>
-                <p>Manual workflows only allow exploring 10-50 design variants. Parametric sweeps are impossible without months of work.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="section" id="solution">
-        <h2>Our Solution</h2>
-        <p>ITDS is the unified backbone for turbomachinery design. Physics-driven. Extensible. Audit-ready.</p>
-
-        <div class="solution-highlight">
-            <h3>10× Faster Design Iteration</h3>
-            <div class="benefits">
-                <div class="benefit">
-                    <h4>1-2 weeks instead of 6-12</h4>
-                    <p>Parametric design from concept to mesh automation, no manual data transfer.</p>
-                </div>
-                <div class="benefit">
-                    <h4>&lt;1% data errors (vs 15-30%)</h4>
-                    <p>Single source of thermodynamic truth. Consistent state throughout workflow.</p>
-                </div>
-                <div class="benefit">
-                    <h4>1000+ design variants in hours</h4>
-                    <p>Automated sweeps explore design space that would take months manually.</p>
-                </div>
-                <div class="benefit">
-                    <h4>60-70% reduction in tool costs</h4>
-                    <p>Replace fragmented tools with single integrated platform.</p>
-                </div>
-                <div class="benefit">
-                    <h4>IP Protection First</h4>
-                    <p>Your proprietary models stay embedded. Not locked into black boxes—fully extensible.</p>
-                </div>
-                <div class="benefit">
-                    <h4>Enterprise-Ready</h4>
-                    <p>Audit trails, reproducible execution, certification-grade documentation.</p>
-                </div>
-            </div>
-        </div>
-
-        <div style="margin-top: 4rem;">
-            <h3 style="color: var(--accent); margin-bottom: 2rem; font-size: 1.5rem;">What ITDS Integrates</h3>
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <h4>Meanline Design</h4>
-                    <p>1D thermodynamic design with validated loss correlations, off-design performance, and off-design prediction.</p>
-                </div>
-                <div class="problem-card">
-                    <h4>Throughflow</h4>
-                    <p>2D radial equilibrium for multi-stage design and performance prediction across the design space.</p>
-                </div>
-                <div class="problem-card">
-                    <h4>Geometry Engine</h4>
-                    <p>Parametric blade and annulus geometry generation for CAD export, meshing prep, or CFD.</p>
-                </div>
-                <div class="problem-card">
-                    <h4>Mesh Automation</h4>
-                    <p>Automated grid generation for CFD (ANSYS TurboGrid, Numeca, open-source tools).</p>
-                </div>
-                <div class="problem-card">
-                    <h4>CFD Integration</h4>
-                    <p>Adapters for ANSYS Fluent, CFX, OpenFOAM. Run CFD, extract validation data, feed back to design.</p>
-                </div>
-                <div class="problem-card">
-                    <h4>Extensibility</h4>
-                    <p>Plugin architecture for your proprietary models (loss correlations, heat transfer, stress).</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Market Section -->
-    <section class="section" id="market">
-        <h2>Market Opportunity</h2>
-        <p>Turbomachinery is a $150B+ global market. Design software is fragmented and expensive.</p>
-
-        <div class="market-stats">
-            <div class="stat">
-                <div class="stat-number">6</div>
-                <div class="stat-label">Major OEM customers (GE, P&W, Rolls-Royce, etc.)</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">100+</div>
-                <div class="stat-label">Tier-1 and Tier-2 suppliers globally</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">$500K–2M</div>
-                <div class="stat-label">Annual software spend per OEM</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">$100K–500K</div>
-                <div class="stat-label">Annual spend per supplier</div>
-            </div>
-        </div>
-
-        <div class="solution-highlight" style="margin-top: 3rem;">
-            <h3>Who We Serve</h3>
-            <div class="benefits">
-                <div class="benefit">
-                    <h4>OEMs (GE, Pratt &Whitney, Rolls-Royce)</h4>
-                    <p>$1-5M/year budget. Need to consolidate fragmented tools and protect IP.</p>
-                </div>
-                <div class="benefit">
-                    <h4>Tier-1 Suppliers</h4>
-                    <p>$200-500K/year budget. Want enterprise capability at reasonable cost.</p>
-                </div>
-                <div class="benefit">
-                    <h4>Defense & Space (eVTOL, aerospace)</h4>
-                    <p>$500K-2M/year. Critical: certification, audit trails, deterministic execution.</p>
-                </div>
-                <div class="benefit">
-                    <h4>Startups (Joby, Lilium, Archer)</h4>
-                    <p>$50-150K/year. No legacy systems. Need speed and modern tooling.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap Section -->
-    <section class="section" id="roadmap">
-        <h2>Development Roadmap</h2>
-        <p>24-month path to enterprise-ready platform with paying customers.</p>
-
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">Months 1-6</div>
-                <div class="timeline-content">
-                    <h4>Physics Hardening</h4>
-                    <p>Rock-solid meanline and throughflow engines with validation against published data (NASA, DLR). Loss models, off-design performance, numerical robustness.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">Months 7-12</div>
-                <div class="timeline-content">
-                    <h4>Integration & Automation</h4>
-                    <p>Geometry engine, meshing automation, CFD adapters (Fluent, TurboGrid). First pilot customer integration. Adapter SDK for extensibility.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">Months 13-18</div>
-                <div class="timeline-content">
-                    <h4>Scaling & Polish</h4>
-                    <p>HPC execution (SLURM, PBS), GUI foundation, enterprise features (licensing, audit trails). 2-3 active pilot customers.</p>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-date">Months 19-24</div>
-                <div class="timeline-content">
-                    <h4>Commercialization</h4>
-                    <p>Sales materials, first commercial licenses, support infrastructure, scale to 5+ customers and $500K+ ARR.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section class="section">
-        <h2>About Us</h2>
-        <div class="team-intro">
-            <h3>Founders with Deep Turbomachinery Expertise</h3>
+    <div class="problem-grid">
+        <div class="problem-card">
+            <h3>Workflow Complexity</h3>
             <p>
-                We're a team of three engineers with 15+ combined years in turbomachinery design, CFD, and software engineering. 
-                We've built meanline solvers, managed CFD workflows at scale, and solved the integration problem from the inside. 
-                We know the pain points because we've lived them.
-            </p>
-            <p>
-                Currently building in stealth mode. We're bootstrapping initial development with focus on physics validation 
-                before pursuing funding. Our goal: prove the technical approach works, then raise capital to scale the team and acquire pilot customers.
+                Engineering projects typically require multiple software tools
+                and data formats, making collaboration and traceability challenging.
             </p>
         </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="section" id="contact">
-        <div class="contact-section">
-            <h2>Stay Updated</h2>
-            <p>We're building ITDS in the open. Follow our progress or reach out if you're interested in piloting.</p>
-            <div class="contact-links">
-                <a href="mailto:contact@itds.dev">📧 Email</a>
-                <a href="https://linkedin.com">💼 LinkedIn</a>
+        <div class="problem-card">
+            <h3>Design Iteration</h3>
+            <p>
+                Iterative engineering processes can be time consuming without
+                automation and consistent data flow between tools.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h3>Data Consistency</h3>
+            <p>
+                Maintaining consistent engineering data across design,
+                simulation, and validation stages remains an industry challenge.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h3>Scalability</h3>
+            <p>
+                Exploring larger design spaces requires efficient automation
+                and integration of simulation workflows.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Capabilities -->
+<section class="section" id="capabilities">
+    <h2>Platform Capabilities</h2>
+    <p>
+        ITDS is being explored as a modular framework supporting turbomachinery
+        engineering workflows.
+    </p>
+
+    <div class="solution-highlight">
+        <h3>Unified Engineering Environment</h3>
+
+        <div class="benefits">
+            <div class="benefit">
+                <h4>Design Automation</h4>
+                <p>
+                    Tools for supporting parametric design and workflow automation.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <h4>Data Integration</h4>
+                <p>
+                    Structured data handling between design, simulation, and analysis tools.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <h4>Simulation Connectivity</h4>
+                <p>
+                    Interfaces designed to support integration with external CFD
+                    and analysis platforms.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <h4>Extensibility</h4>
+                <p>
+                    Modular architecture intended to support customization
+                    and future expansion.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <h4>Reproducible Workflows</h4>
+                <p>
+                    Emphasis on traceable and repeatable engineering processes.
+                </p>
+            </div>
+
+            <div class="benefit">
+                <h4>Research & Prototyping</h4>
+                <p>
+                    Platform intended to support experimentation with engineering methods.
+                </p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 ITDS. Building the future of turbomachinery design.</p>
-        <p>Currently in development. Not for commercial use.</p>
-    </footer>
+<!-- Technology -->
+<section class="section" id="technology">
+    <h2>Technology Focus</h2>
+
+    <p>
+        The platform explores integration of various computational and
+        engineering technologies commonly used in turbomachinery design.
+    </p>
+
+    <div class="problem-grid">
+
+        <div class="problem-card">
+            <h4>Thermodynamic Modeling</h4>
+            <p>
+                Support for modeling performance and operating conditions
+                in turbomachinery systems.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h4>Flow Analysis</h4>
+            <p>
+                Exploration of tools that support aerodynamic and flow
+                performance evaluation.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h4>Geometry Generation</h4>
+            <p>
+                Parametric modeling approaches for turbomachinery components.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h4>Simulation Integration</h4>
+            <p>
+                Interfaces for connecting with commercial or open-source
+                simulation tools.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h4>Automation Tools</h4>
+            <p>
+                Workflow automation concepts to support engineering productivity.
+            </p>
+        </div>
+
+        <div class="problem-card">
+            <h4>Modular Architecture</h4>
+            <p>
+                System architecture designed to allow extensibility and
+                flexible integration.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<!-- About -->
+<section class="section">
+    <h2>About</h2>
+
+    <div class="team-intro">
+        <h3>Engineering Exploration Project</h3>
+
+        <p>
+            ITDS is an independent engineering exploration project focused on
+            studying unified workflows for turbomachinery design and simulation.
+        </p>
+
+        <p>
+            The platform is currently under research and development and is
+            intended for experimentation, prototyping, and technology evaluation.
+        </p>
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="section" id="contact">
+    <div class="contact-section">
+        <h2>Contact</h2>
+        <p>
+            For general inquiries or collaboration discussions, feel free to reach out.
+        </p>
+
+        <div class="contact-links">
+            <a href="mailto:contact@itds.dev">📧 Email</a>
+            <a href="https://linkedin.com">💼 LinkedIn</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2026 ITDS. Concept engineering platform.</p>
+    <p>Research and exploration project.</p>
+</footer>
 
     <script>
         // --- Advanced 3D Turbine Visualization ---
