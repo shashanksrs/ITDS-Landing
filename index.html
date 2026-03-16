@@ -1,708 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ITDS - Integrated Turbomachinery Design System. Unifying turbomachinery design from concept to validation.">
-    <meta name="keywords" content="turbomachinery, design, engineering, CFD, automation">
-    <meta property="og:title" content="ITDS - Integrated Turbomachinery Design System">
-    <meta property="og:description" content="10× faster turbomachinery design with physics-driven automation">
-    <meta property="og:type" content="website">
-    <title>ITDS - Integrated Turbomachinery Design System</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ITDS – Integrated Turbomachinery Design System | Engineering Software Platform</title>
+
+<!-- Primary SEO -->
+<meta name="description" content="ITDS (Integrated Turbomachinery Design System) is an engineering software concept platform exploring turbomachinery design automation, CFD integration, and unified simulation workflows.">
+<meta name="keywords" content="turbomachinery, turbomachinery design software, CFD automation, engineering simulation platform, turbine design, compressor design, turbomachinery workflow automation">
+<meta name="author" content="AeroNex Systems">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+
+<!-- Classification signals for enterprise web filters -->
+<meta name="classification" content="Engineering Software Platform">
+<meta name="category" content="Technology, Engineering Software">
+<meta name="industry" content="Engineering Technology">
+<meta name="application-name" content="ITDS Turbomachinery Design Platform">
+<meta name="generator" content="ITDS Concept Engineering Platform">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://www.aeronexsys.com">
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:image" content="https://www.aeronexsys.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Theme -->
+<meta name="theme-color" content="#0f172a">
+
+<!-- Open Graph -->
+<meta property="og:title" content="ITDS – Integrated Turbomachinery Design System">
+<meta property="og:description" content="Concept engineering platform exploring unified turbomachinery design workflows and simulation automation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.aeronexsys.com">
+<meta property="og:site_name" content="ITDS">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ITDS – Integrated Turbomachinery Design System">
+<meta name="twitter:description" content="Engineering platform exploring turbomachinery design automation and simulation workflows.">
+
+<!-- Structured Data : Organization -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "AeroNex Systems",
+ "url": "https://www.aeronexsys.com",
+ "logo": "https://www.aeronexsys.com/logo.png",
+ "industry": "Engineering Software",
+ "areaServed": "Global",
+ "description": "AeroNex Systems develops engineering software platforms focused on turbomachinery design automation, simulation integration, and engineering workflow systems."
+}
+</script>
+
+<!-- Structured Data : WebSite -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebSite",
+ "name": "Integrated Turbomachinery Design System",
+ "alternateName": "ITDS",
+ "url": "https://www.aeronexsys.com",
+ "description": "Concept engineering platform exploring turbomachinery design automation and simulation integration."
+}
+</script>
+
+<!-- Structured Data : SoftwareApplication -->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Integrated Turbomachinery Design System",
+ "operatingSystem": "Web Platform",
+ "applicationCategory": "EngineeringApplication",
+ "creator": {
+   "@type": "Organization",
+   "name": "AeroNex Systems"
+ },
+ "description": "Engineering platform concept for turbomachinery design automation, CFD integration, and unified simulation workflows."
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-        :root {
-            --primary: #0f172a;
-            --secondary: #1e293b;
-            --accent: #3b82f6;
-            --accent-light: #60a5fa;
-            --text: #e2e8f0;
-            --text-muted: #cbd5e1;
-            --border: #334155;
-            --success: #10b981;
-            --warning: #f59e0b;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, #0d1628 100%);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem 2rem;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: var(--accent);
-            text-transform: uppercase;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--accent);
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            min-height: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: visible;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 20s ease-in-out infinite;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) translateX(0px); }
-            50% { transform: translateY(-30px) translateX(-20px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            animation: slideUp 0.8s ease-out;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        /* Turbine Container */
-        .turbine-container {
-            width: 100%;
-            height: 600px;
-            margin: 4rem 0 6rem 0;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-            border-top: 1px solid rgba(59, 130, 246, 0.2);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
-            position: relative;
-            overflow: hidden;
-            cursor: grab;
-        }
-        
-        .turbine-container:active {
-            cursor: grabbing;
-        }
-
-        .canvas-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #turbineCanvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-
-        .turbine-hint {
-            font-size: 0.85rem;
-            color: var(--accent-light);
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2;
-            font-style: italic;
-            white-space: nowrap;
-            background: rgba(15, 23, 42, 0.7);
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            pointer-events: none;
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent-light) 0%, #93c5fd 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -1px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-
-        .btn {
-            padding: 0.875rem 2.25rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            color: white;
-            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
-        }
-
-        .stage-badge {
-            display: inline-block;
-            background: rgba(16, 185, 129, 0.2);
-            border: 1px solid var(--success);
-            color: var(--success);
-            padding: 0.65rem 1.25rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            animation: slideUp 0.8s ease-out 0.1s both;
-        }
-
-        /* Section Styling */
-        .section {
-            max-width: 1200px;
-            margin: 6rem auto;
-            padding: 0 2rem;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            text-align: center;
-            color: var(--text);
-            font-weight: 700;
-        }
-
-        .section > p {
-            text-align: center !important;
-            color: var(--text-muted) !important;
-            margin-bottom: 3rem !important;
-            font-size: 1.1rem !important;
-        }
-
-        /* Problem Grid */
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .problem-card {
-            background: rgba(30, 41, 59, 0.5);
-            border: 1px solid var(--border);
-            padding: 2.5rem 2rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .problem-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-
-        .problem-card:hover {
-            border-color: var(--accent);
-            background: rgba(30, 41, 59, 0.8);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-        }
-
-        .problem-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .problem-card h3 {
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .problem-card h4 {
-            color: var(--accent-light);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .problem-card p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-
-        /* Solution Highlight */
-        .solution-highlight {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(10, 185, 128, 0.04) 100%);
-            border: 2px solid rgba(59, 130, 246, 0.2);
-            padding: 3.5rem;
-            border-radius: 12px;
-            margin: 3rem 0;
-            backdrop-filter: blur(10px);
-        }
-
-        .solution-highlight h3 {
-            color: var(--accent);
-            margin-bottom: 2rem;
-            font-size: 1.8rem;
-            font-weight: 700;
-        }
-
-        .benefits {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .benefit {
-            padding: 2rem;
-            background: rgba(15, 23, 42, 0.6);
-            border-left: 4px solid var(--accent);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .benefit:hover {
-            background: rgba(15, 23, 42, 0.8);
-            transform: translateX(8px);
-        }
-
-        .benefit h4 {
-            color: var(--accent-light);
-            margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-
-        .benefit p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Market Stats */
-        .market-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 2.5rem;
-            background: rgba(30, 41, 59, 0.6);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .stat:hover {
-            background: rgba(30, 41, 59, 0.8);
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 200px 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 99px;
-            top: 30px;
-            width: 2px;
-            height: calc(100% + 30px);
-            background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
-        }
-
-        .timeline-item:last-child::before {
-            display: none;
-        }
-
-        .timeline-date {
-            font-weight: 700;
-            color: var(--accent);
-            position: relative;
-            z-index: 1;
-            font-size: 1.05rem;
-        }
-
-        .timeline-date::before {
-            content: '';
-            position: absolute;
-            left: -39px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.6);
-        }
-
-        .timeline-content {
-            background: rgba(30, 41, 59, 0.6);
-            padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--accent);
-            transition: all 0.3s ease;
-        }
-
-        .timeline-content:hover {
-            background: rgba(30, 41, 59, 0.8);
-        }
-
-        .timeline-content h4 {
-            color: var(--text);
-            margin-bottom: 0.75rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .timeline-content p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        /* Team Section */
-        .team-intro {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid var(--border);
-            padding: 3rem;
-            border-radius: 12px;
-            margin-bottom: 3rem;
-        }
-
-        .team-intro h3 {
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .team-intro p {
-            color: var(--text-muted);
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
-            text-align: center;
-            padding: 5rem 2rem;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(10, 185, 128, 0.05) 100%);
-            border-radius: 12px;
-            margin: 4rem 0;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .contact-section h2 {
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-section p {
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-        }
-
-        .contact-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 0.75rem 1.5rem;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            border-radius: 6px;
-        }
-
-        .contact-links a:hover {
-            color: var(--accent-light);
-            border-color: var(--accent);
-            background: rgba(59, 130, 246, 0.1);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 2rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: 6rem;
-            background: rgba(15, 23, 42, 0.5);
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .turbine-container {
-                height: 350px;
-                margin: 3rem 0 4rem 0;
-            }
-
-            .timeline-item {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .timeline-item::before {
-                left: -30px;
-            }
-
-            .timeline-date::before {
-                left: -46px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .hero-content {
-                padding: 2rem;
-            }
-
-            .section {
-                margin: 4rem auto;
-            }
-
-            .section h2 {
-                font-size: 1.8rem;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .solution-highlight {
-                padding: 2rem;
-            }
-
-            .contact-section {
-                padding: 3rem 1.5rem;
-            }
-
-            .team-intro {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            nav {
-                padding: 1rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .hero {
-                margin-top: 70px;
-                padding: 2rem 1rem;
-                min-height: 90vh;
-            }
-
-            .hero h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero p {
-                font-size: 0.95rem;
-            }
-
-            .hero-content {
-                padding: 1.5rem;
-            }
-
-            .section {
-                padding: 0 1rem;
-            }
-
-            .problem-grid {
-                gap: 1.5rem;
-            }
-
-            .turbine-container {
-                height: 280px;
-                margin: 2rem 0 3rem 0;
-            }
-
-            .turbine-hint {
-                font-size: 0.7rem;
-            }
-        }
-    </style>
 </head>
 <body><!-- Only CONTENT sections updated. CSS / JS untouched -->
 
@@ -930,7 +315,7 @@
         </p>
 
         <div class="contact-links">
-            <a href="mailto:contact@itds.dev">📧 Email</a>
+            <a href="mailto:contact@aeronexsys.com">📧 Email</a>
             <a href="https://linkedin.com">💼 LinkedIn</a>
         </div>
     </div>
